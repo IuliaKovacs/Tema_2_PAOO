@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include <cstring>
 #include <iostream>
 using namespace std;
 
@@ -9,16 +10,16 @@ namespace cashDesk
 
     class property
     {
-        char street[20];
+        string street;
         int number;
         int surface;
     public:
-        property(char street[], int number, int surface);
+        property(string street, int number, int surface);
         ~property();
-        void setStreet(char street[] ) { strcpy(this->street, street); }
+        void setStreet(string street) { this->street = street; }
         void setNumber(int number){ this->number = number; }
         void setSurface(int surface){ this->surface = surface; }
-        char* getStreet(){ return street; }
+        string getStreet(){ return street; }
         int getNumber(){ return number; }
         int getSurface() { return surface; }
         virtual int computePayment() = 0; //pure virtual function
@@ -29,7 +30,7 @@ namespace cashDesk
     {   
         int apartmentNumber;
     public:
-        building(int apartmentNumber, char street[], int number, int surface);
+        building(int apartmentNumber, string street, int number, int surface);
         ~building();
         void setApartmentNumber(int apartmentNumber){ this->apartmentNumber = apartmentNumber; }
         int getApartmentNumber(){ return apartmentNumber; }
@@ -40,7 +41,7 @@ namespace cashDesk
     class land : public property
     {   int rank;
     public:
-        land(int rank, char street[], int number, int surface);
+        land(int rank, string street, int number, int surface);
         ~land();
         void setRank(int rank){ this->rank = rank; }
         int getRank(){ return rank; }
@@ -55,7 +56,8 @@ namespace cashDesk
     public:
         contributor();
         ~contributor();
-        void addProperty(property property);
+        void addProperty(property *property);
+        int computeTotalPayment();
     };
     
 }
