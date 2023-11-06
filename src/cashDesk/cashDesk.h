@@ -51,11 +51,12 @@ namespace cashDesk
 
     class contributor
     {
-        property *properties;
+        property *properties[4];
         int propertiesNumber;
     public:
         contributor();
         ~contributor();
+        int getPropertiesNumber() { return propertiesNumber; }
         void addProperty(property *property);
         int computeTotalPayment();
     };

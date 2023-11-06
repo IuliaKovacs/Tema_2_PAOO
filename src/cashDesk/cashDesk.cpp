@@ -32,7 +32,7 @@ namespace cashDesk
     
     int building::computePayment()
     {
-        return getSurface()*500;    
+        return getSurface()*10;    
     }
 
     void building::show()
@@ -56,7 +56,7 @@ namespace cashDesk
 
     int land::computePayment()
     {
-        return (getSurface()*350)/rank;
+        return (getSurface()*10)/rank;
     }
 
     void land::show()
@@ -80,7 +80,7 @@ namespace cashDesk
 
     void contributor::addProperty(property *property)
     {
-        properties[propertiesNumber] = *property;
+        properties[propertiesNumber] = property;
         propertiesNumber++;
     }
 
@@ -90,7 +90,7 @@ namespace cashDesk
 
         for (int i=0; i<propertiesNumber; i++)
         {
-            totalPayment += properties[i].computePayment(); 
+            totalPayment += properties[i]->computePayment(); 
         }
 
         return totalPayment;

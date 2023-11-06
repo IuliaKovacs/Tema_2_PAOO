@@ -8,9 +8,9 @@ using namespace std;
 
 int main() {
     
-    building house = building(15, "High Street", 6, 300);
-    building house2 = building(7, "Maple Street", 10, 500);
-    land verdantValley = land(3, "Oak Street", 100, 10000);
+    building house = building(15, "High Street", 6, 30);
+    building house2 = building(7, "Maple Street", 10, 50);
+    land verdantValley = land(10, "Oak Street", 100, 1000);
 
     contributor Mihai = contributor();
 
@@ -28,9 +28,13 @@ int main() {
 
     Mihai.addProperty(p);
 
+    cout<<"Total number of properties: "<<Mihai.getPropertiesNumber()<<endl;
+
     int totalPayment =  Mihai.computeTotalPayment();
 
-    cout<<totalPayment;
+    cout<<"----- Polymorphism part -----"<<endl;
+
+    cout<<"Total Payment for Mihai: "<<totalPayment<<endl;
 
     return 0;
 }
