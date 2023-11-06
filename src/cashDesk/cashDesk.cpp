@@ -8,7 +8,7 @@ namespace cashDesk
 
     property::property(string street, int number, int surface)
     {
-        cout<<"Property constructor in use"<<'\n';
+        cout<<"Property constructor in use"<<endl;
         this->street = street;
         this->number = number;
         this->surface = surface;
@@ -16,66 +16,100 @@ namespace cashDesk
 
     property::~property()
     {
-        cout<<"Property destructor in use"<<'\n';
+        cout<<"Property destructor in use"<<endl;
+    }
+
+    building::building(building &&source) : building(source.apartmentNumber, source.getStreet(), source.getNumber(), source.getSurface())
+    {
+        cout<<"Building move constructor in use"<<endl;
+        // Steal the data and then null out the source 
+        source.apartmentNumber = 0;
+        source.setStreet("");
+        source.setNumber(0);
+        source.setSurface(0);
     }
 
     building::building(int apartmentNumber, string street, int number, int surface) : property(street, number, surface)
     {
-        cout<<"Building constructor in use"<<'\n';
+        cout<<"Building constructor in use"<<endl;
         this->apartmentNumber = apartmentNumber;
     }
 
     building::~building()
     {
-        cout<<"Building destructor in use"<<'\n';
+        cout<<"Building destructor in use"<<endl;
     }
     
     int building::computePayment()
-    {
-        return getSurface()*10;    
+    {   
+        if (getSurface() != 0 )
+        {
+            return getSurface()*10;  
+        }
+        else 
+        {
+            return 0;
+        }
     }
 
     void building::show()
     {
-        cout<<"Street: "<<getStreet()<<'\n';
-        cout<<"Number: "<<getNumber()<<'\n';
-        cout<<"Surface: "<<getSurface()<<'\n';
-        cout<<"Apartment: "<<getApartmentNumber()<<'\n';
+        cout<<"Street: "<<getStreet()<<endl;
+        cout<<"Number: "<<getNumber()<<endl;
+        cout<<"Surface: "<<getSurface()<<endl;
+        cout<<"Apartment: "<<getApartmentNumber()<<endl;
     }
 
     land::land(int rank, string street, int number, int surface) : property(street, number, surface)
     {
-        cout<<"Land constructor in use"<<'\n';
+        cout<<"Land constructor in use"<<endl;
         this->rank = rank;
     }
 
     land::~land()
     {
-        cout<<"Land destructor in use"<<'\n';
+        cout<<"Land destructor in use"<<endl;
+    }
+
+    land::land(land &&source) : land(source.rank, source.getStreet(), source.getNumber(), source.getSurface())
+    {   
+        cout<<"Land move constructor in use"<<endl;
+        // Steal the data and then null out the source 
+        source.rank = 0;
+        source.setStreet("");
+        source.setNumber(0);
+        source.setSurface(0);
     }
 
     int land::computePayment()
     {
-        return (getSurface()*10)/rank;
+        if(getSurface() != 0 && rank != 0)
+        {
+            return (getSurface()*10)/rank;
+        }
+        else 
+        {
+            return 0;
+        }
     }
 
     void land::show()
     {
-        cout<<"Street: "<<getStreet()<<'\n';
-        cout<<"Number: "<<getNumber()<<'\n';
-        cout<<"Surface: "<<getSurface()<<'\n';
-        cout<<"Rank: "<<getRank()<<'\n';
+        cout<<"Street: "<<getStreet()<<endl;
+        cout<<"Number: "<<getNumber()<<endl;
+        cout<<"Surface: "<<getSurface()<<endl;
+        cout<<"Rank: "<<getRank()<<endl;
     }
 
     contributor::contributor()
     {
-        cout<<"Contributor constructor in use"<<'\n';
+        cout<<"Contributor constructor in use"<<endl;
         this->propertiesNumber = 0;
     }
 
     contributor::~contributor()
     {
-        cout<<"Contributor destructor in use"<<'\n';
+        cout<<"Contributor destructor in use"<<endl;
     }
 
     void contributor::addProperty(property *property)

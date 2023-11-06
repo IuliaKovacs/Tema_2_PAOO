@@ -14,8 +14,8 @@ namespace cashDesk
         int number;
         int surface;
     public:
-        property(string street, int number, int surface);
-        ~property();
+        property(string street, int number, int surface); //Constructor
+        ~property(); // Destructor
         void setStreet(string street) { this->street = street; }
         void setNumber(int number){ this->number = number; }
         void setSurface(int surface){ this->surface = surface; }
@@ -30,8 +30,9 @@ namespace cashDesk
     {   
         int apartmentNumber;
     public:
-        building(int apartmentNumber, string street, int number, int surface);
-        ~building();
+        building(int apartmentNumber, string street, int number, int surface); //Constructor
+        ~building(); //Destructor
+        building(building &&source); // Move Constructor
         void setApartmentNumber(int apartmentNumber){ this->apartmentNumber = apartmentNumber; }
         int getApartmentNumber(){ return apartmentNumber; }
         int computePayment();
@@ -41,8 +42,9 @@ namespace cashDesk
     class land : public property
     {   int rank;
     public:
-        land(int rank, string street, int number, int surface);
-        ~land();
+        land(int rank, string street, int number, int surface); // Contructor
+        ~land(); // Destructor
+        land(land &&source); // Move Constructor
         void setRank(int rank){ this->rank = rank; }
         int getRank(){ return rank; }
         int computePayment();

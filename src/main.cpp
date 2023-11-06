@@ -28,13 +28,28 @@ int main() {
 
     Mihai.addProperty(p);
 
-    cout<<"Total number of properties: "<<Mihai.getPropertiesNumber()<<endl;
-
-    int totalPayment =  Mihai.computeTotalPayment();
-
     cout<<"----- Polymorphism part -----"<<endl;
 
-    cout<<"Total Payment for Mihai: "<<totalPayment<<endl;
+    cout<<"Total number of properties: "<<Mihai.getPropertiesNumber()<<endl;
+
+    cout<<"Total Payment for Mihai: "<<Mihai.computeTotalPayment()<<endl;
+
+    cout<<"----- Move constructor part -----"<<endl;
+    cout<<"----- Moving the content from house2 object in newHouse object "<<endl;
+    cout<<"----- The compute payment should show less because we cleared house2 fields "<<endl;
+
+    building newHouse = std::move(house2);
+
+    land newLand = std::move(verdantValley);
+
+    cout<<"-----    old land         -----"<<endl;
+    verdantValley.show();
+
+    cout<<"----- new created land with move constructor  -----"<<endl;
+    newLand.show();
+
+    cout<<"Total Payment for Mihai: "<<Mihai.computeTotalPayment()<<endl;
+    cout<<"-----                 -----"<<endl;
 
     return 0;
 }

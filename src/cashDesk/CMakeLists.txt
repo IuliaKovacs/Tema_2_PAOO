@@ -1,1 +1,1 @@
-add_library(CashDesk STATIC cashDesk.hpp cashDesk.cpp)
+add_library(CashDesk STATIC cashDesk.h cashDesk.cpp)
