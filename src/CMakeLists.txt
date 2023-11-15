@@ -10,9 +10,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "./../../build")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "./../../build")
 
 
-add_subdirectory(cashDesk)
+add_subdirectory(CashDesk)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-target_link_directories(${PROJECT_NAME} PUBLIC cashDesk)
-target_link_libraries(${PROJECT_NAME} PUBLIC CashDesk)
+target_link_directories(${PROJECT_NAME} PUBLIC CashDesk)
+target_link_libraries(${PROJECT_NAME} PUBLIC libCashDesk)
